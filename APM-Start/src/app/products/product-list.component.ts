@@ -16,12 +16,12 @@ export class ProductListComponent {
   pageTitle = 'Product List';
   errorMessage = '';
 
-  private categorySelectedSubjet = new Subject<number>();
+  private categorySelectedSubjet = new BehaviorSubject<number>(0);
   categorySelectedAction$ = this.categorySelectedSubjet.asObservable();
 
   products$ = combineLatest([
     this.productService.productWithCategory$,
-    this.categorySelectedAction$.pipe(startWith(0))
+    this.categorySelectedAction$
   ])
     .pipe(
       map(([products, categorySelectedId]) =>
