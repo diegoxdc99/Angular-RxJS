@@ -24,7 +24,7 @@
 
     <div class="table-responsive">
       <table class="table mb-0"
-             *ngIf="products">
+             *ngIf="productsSimpleFilter$ | async as products">
         <thead>
           <tr>
             <th>Product</th>
@@ -32,13 +32,14 @@
             <th>Category</th>
             <th>Price</th>
             <th>In Stock</th>
+            <th>Nuevo</th>
           </tr>
         </thead>
         <tbody *ngFor="let product of products">
           <tr>
             <td>{{ product.productName }}</td>
             <td>{{ product.productCode }}</td>
-            <td>{{ product.categoryId }}</td>
+            <td>{{ product.category }}</td>
             <td>{{ product.price | currency:"USD":"symbol":"1.2-2" }}</td>
             <td>{{ product.quantityInStock }}</td>
           </tr>
