@@ -4,7 +4,7 @@ import { Subscription, Observable, EMPTY, Subject, combineLatest, BehaviorSubjec
 
 import { Product } from './product';
 import { ProductService } from './product.service';
-import { map, catchError, tap } from 'rxjs/operators';
+import { map, catchError, tap, startWith } from 'rxjs/operators';
 import { ProductCategoryService } from '../product-categories/product-category.service';
 
 @Component({
@@ -21,7 +21,7 @@ export class ProductListComponent {
 
   products$ = combineLatest([
     this.productService.productWithCategory$,
-    this.categorySelectedAction$
+    this.categorySelectedAction$.pipe(startWith(0))
   ])
     .pipe(
       map(([products, categorySelectedId]) =>
