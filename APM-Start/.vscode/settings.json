@@ -1,4 +1,6 @@
 {
   "files.autoSave": "afterDelay",
-  "html.format.wrapAttributes": "force-aligned"
+  "html.format.wrapAttributes": "force-aligned",
+  "prettier.singleQuote": true,
+  "prettier.jsxSingleQuote": true
 }
